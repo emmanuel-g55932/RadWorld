@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>RD_IGotJob</defName>
+    <durationDays>30.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>I got the job</label>
+        <description>My application was accepted. I’m so excited to make a difference here!</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
+    <defName>RD_TradedInFromRimdeed</defName>
+    <durationDays>14.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>Traded-in from Rimdeed</label>
+        <description>I had my own impressive bedroom and ate lavish meals everyday while I awaited employment in a corporate hubworld. Now I’m here.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
+    <defName>RD_TradedInToRimdeed</defName>
+    <durationDays>14.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>Traded-in to Rimdeed</label>
+        <description>We sent someone to a corporate Hubworld. At least they’re taken care of until they find a new place to work in.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+</Defs>

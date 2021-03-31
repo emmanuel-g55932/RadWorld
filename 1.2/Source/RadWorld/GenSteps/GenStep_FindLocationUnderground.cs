@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using Verse;
 
 namespace RadWorld
@@ -19,7 +20,7 @@ namespace RadWorld
 			DeepProfiler.Start("RebuildAllRegions");
 			map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
 			DeepProfiler.End();
-			MapGenerator.PlayerStartSpot = CellFinderLoose.TryFindCentralCell(map, 7, map.AllCells.EnumerableCount(), (IntVec3 x) => x.Walkable(map));
+			MapGenerator.PlayerStartSpot = CellFinderLoose.RandomCellWith((IntVec3 x) => x.Walkable(map) && x.GetRoof(map) != RoofDefOf.RoofRockThick, map);
 		}
 	}
 }

@@ -41,6 +41,7 @@ namespace RadWorld
 			return thingDef;
 		}
 
+
 		public override void Generate(Map map, GenStepParams parms)
 		{
 			Log.Message("GenStep_RocksFromGridUnderground");
@@ -59,20 +60,34 @@ namespace RadWorld
 				list.Add(roofThreshold2);
 				MapGenFloatGrid elevation = MapGenerator.Elevation;
 				MapGenFloatGrid caves = MapGenerator.Caves;
+
+				//HashSet<IntVec3> rockCells = new HashSet<IntVec3>();
+				//HashSet<IntVec3> openWalkableCells = new HashSet<IntVec3>();
 				foreach (IntVec3 allCell in map.AllCells)
 				{
 					float num2 = elevation[allCell];
 					if (caves[allCell] <= 0f)
 					{
 						GenSpawn.Spawn(RockDefAt(allCell), allCell, map);
-					}
-					else
-					{
-						Log.Message(allCell + " - cave");
-						Log.ResetMessageCount();
+						//rockCells.Add(allCell);
 					}
 					map.roofGrid.SetRoof(allCell, RoofDefOf.RoofRockThin);
 				}
+
+				//var desiredThinRoovesCount = Rand.Range(4f, 7f);
+				//float totalWalkableCellCount = openWalkableCells.Count;
+				//var thinRooveSpawnChance = desiredThinRoovesCount / totalWalkableCellCount;
+				//
+				//foreach (IntVec3 allCell in map.AllCells)
+				//{
+				//	if (openWalkableCells.Contains(allCell) && Rand.Chance(thinRooveSpawnChance))
+				//	{
+				//	}
+				//	else
+				//	{
+				//		map.roofGrid.SetRoof(allCell, RoofDefOf.RoofRockThick);
+				//	}
+				//}
 				BoolGrid visited = new BoolGrid(map);
 				List<IntVec3> toRemove = new List<IntVec3>();
 				foreach (IntVec3 allCell2 in map.AllCells)

@@ -17,9 +17,12 @@ namespace RadWorld
 		public static BiomeDef RW_SurfaceCavern;
 		public static BiomeDef RW_Cavern;
 
+		public static GameConditionDef RW_ToxicFallout;
 		public static GameConditionDef RW_UndergroundCondition;
+
 		public static MapGeneratorDef RW_CavernBase_Player;
 		public static MapGeneratorDef RW_CavernBase_Faction;
 		public static MapGeneratorDef RW_CavernEncounter;
+		public static StatDef RW_RadiationResistance;
 	}
 }

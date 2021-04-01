@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Biome\BiomeWorker_Cavern.cs" />
+    <Compile Include="GameConditions\GameCondition_ToxicFalloutRadWorld.cs" />
     <Compile Include="HarmonyPatches\RoovesPatches.cs" />
+    <Compile Include="ModExtensions\BiomeOptions.cs" />
+    <Compile Include="RW_Utils.cs" />
     <Compile Include="RW_DefOf.cs" />
     <Compile Include="GenSteps\GenStep_CavesUnderground.cs" />
     <Compile Include="GenSteps\GenStep_FindLocationUnderground.cs" />

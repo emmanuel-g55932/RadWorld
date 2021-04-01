@@ -112,9 +112,14 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
-	
-		<BiomeDef>
+
+	<BiomeDef>
 		<defName>RW_LushCavern</defName>
 		<label>Lush cavern</label>
 		<description>PLACEHOLDER.</description>
@@ -225,9 +230,14 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
-	
-		<BiomeDef>
+
+	<BiomeDef>
 		<defName>RW_SickCavern</defName>
 		<label>Sick cavern</label>
 		<description>PLACEHOLDER.</description>
@@ -338,9 +348,14 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
-	
-		<BiomeDef>
+
+	<BiomeDef>
 		<defName>RW_InfestedCavern</defName>
 		<label>Infested cavern</label>
 		<description>PLACEHOLDER.</description>
@@ -451,9 +466,14 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
-	
-		<BiomeDef>
+
+	<BiomeDef>
 		<defName>RW_BarrenCavern</defName>
 		<label>Barren cavern</label>
 		<description>PLACEHOLDER.</description>
@@ -564,8 +584,13 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
-	
+
 	<BiomeDef>
 		<defName>RW_SurfaceCavern</defName>
 		<label>Surface cavern</label>
@@ -677,8 +702,13 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
-	
+
 	<BiomeDef>
 		<defName>RW_Cavern</defName>
 		<label>Cavern</label>
@@ -790,5 +820,10 @@
 			<Megaspider>0.3</Megaspider>
 			<Spelopede>0.15</Spelopede>
 		</wildAnimals>
+		<modExtensions>
+			<li Class="RadWorld.BiomeOptions">
+				<nuclearFalloutModifier>0</nuclearFalloutModifier>
+			</li>
+		</modExtensions>
 	</BiomeDef>
 </Defs>

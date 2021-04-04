@@ -107,8 +107,13 @@ namespace RadWorld
             if (p.RaceProps.IsFlesh)
             {
                 float num = 0.028758334f;
-                num *= p.GetStatValue(RW_DefOf.RW_RadiationResistance);
                 num *= caravan.Biome.GetNuclearModifier();
+                var resistance = 1f - p.GetStatValue(RW_DefOf.RW_RadiationResistance);
+                if (resistance < 0)
+                {
+                    resistance = 0;
+                }
+                num *= resistance;
                 if (num != 0f)
                 {
                     float num2 = Mathf.Lerp(0.85f, 1.15f, Rand.ValueSeeded(p.thingIDNumber ^ 0x46EDC5D));

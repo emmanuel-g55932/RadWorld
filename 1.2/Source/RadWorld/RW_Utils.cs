@@ -29,6 +29,11 @@ namespace RadWorld
 					});
 				}
             }
+
+			foreach (var thingDef in DefDatabase<ThingDef>.AllDefs.Where(x => x.race?.Humanlike ?? false))
+            {
+				thingDef.comps.Add(new CompProperties { compClass = typeof(CompMutation) });
+            }
         }
 
 		public static float GetNuclearModifier(this BiomeDef biomeDef)

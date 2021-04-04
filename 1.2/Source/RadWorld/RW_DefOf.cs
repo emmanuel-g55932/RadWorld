@@ -24,5 +24,7 @@ namespace RadWorld
 		public static MapGeneratorDef RW_CavernBase_Faction;
 		public static MapGeneratorDef RW_CavernEncounter;
 		public static StatDef RW_RadiationResistance;
+		public static StatDef RW_RadiationResistanceOffset;
+		public static StatDef RW_RadiationResistancePoweredOffset;
 	}
 }

@@ -47,7 +47,9 @@
     <Compile Include="Comps\CompMutation.cs" />
     <Compile Include="Comps\CompGasMaskReloadable.cs" />
     <Compile Include="GameConditions\GameCondition_ToxicFalloutRadWorld.cs" />
+    <Compile Include="HarmonyPatches\PawnPatches.cs" />
     <Compile Include="HarmonyPatches\RoovesPatches.cs" />
+    <Compile Include="Hediffs\Hediff_Radiation.cs" />
     <Compile Include="ModExtensions\BiomeOptions.cs" />
     <Compile Include="RW_Utils.cs" />
     <Compile Include="RW_DefOf.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="HarmonyPatches\HarmonyInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Biome\CavernPerlin.cs" />
+    <Compile Include="Stats\StatPart_MutationHediff.cs" />
     <Compile Include="Stats\StatPart_RadiationApparelProtection.cs" />
   </ItemGroup>
   <ItemGroup>

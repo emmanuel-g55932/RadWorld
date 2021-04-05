@@ -26,5 +26,27 @@ namespace RadWorld
 		public static StatDef RW_RadiationResistance;
 		public static StatDef RW_RadiationResistanceOffset;
 		public static StatDef RW_RadiationResistancePoweredOffset;
+		public static ThingDef RW_RadiationCollector;
+		public static ThingDef RW_NanotechPurifier;
+		public static HediffDef RW_Radiation;
+
+		public static HediffDef RW_RadiationResistanceHediff;
+		public static HediffDef RW_ExtraArm;
+		public static HediffDef RW_ExtraLeg;
+		public static HediffDef RW_DeformedEyes;
+		public static HediffDef RW_DeformedLung;
+		public static HediffDef RW_DeadNerves;
+		public static HediffDef RW_EnlargedStomach;
+		public static HediffDef RW_ReducedStomach;
+		public static HediffDef RW_IrradiatedBlood;
+		public static HediffDef RW_IrradiatedBrain;
+		public static HediffDef RW_EnlargedEars;
+		public static HediffDef RW_DeformedEars;
+		public static HediffDef RW_DeformedMouth;
+		public static HediffDef RW_RadiationBurnScar;
+		public static HediffDef RW_EnlargedMuscles;
+		public static HediffDef RW_WeakenedMuscles;
+		public static HediffDef RW_ScalySkin;
+
 	}
 }

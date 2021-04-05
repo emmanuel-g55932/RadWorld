@@ -26,7 +26,33 @@
 		<researchViewX>10.00</researchViewX>
 		<researchViewY>1.5</researchViewY>
 	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>RW_RadCleanser</defName>
+		<label>rad cleanser</label>
+		<description>rad cleanser</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>RW_RadiationProtection</li>
+		</prerequisites>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>1.5</researchViewY>
+	</ResearchProjectDef>
 
+	<ResearchProjectDef>
+		<defName>RW_AdvRadCleanser</defName>
+		<label>advance rad cleanser</label>
+		<description>rad cleanser</description>
+		<baseCost>3500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>RW_RadCleanser</li>
+		</prerequisites>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>1.5</researchViewY>
+	</ResearchProjectDef>
+	
 	<ResearchProjectDef>
 		<defName>RW_RadPills</defName>
 		<label>rad pills</label>

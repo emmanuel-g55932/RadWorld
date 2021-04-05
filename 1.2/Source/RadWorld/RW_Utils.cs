@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 using Verse.Noise;
 
@@ -44,6 +45,23 @@ namespace RadWorld
 				return options.nuclearFalloutModifier;
 			}
 			return 0;
+		}
+
+		public static float GetRadiationImpactMultiplier(this Pawn pawn)
+		{
+			if (pawn.Map != null)
+            {
+				if (GenRadial.RadialDistinctThingsAround(pawn.Position, pawn.Map, 6.9f, true).Any(x => x.def == RW_DefOf.RW_RadiationCollector && x.TryGetComp<CompPowerTrader>().PowerOn))
+                {
+					return 0f;
+                }
+				if (GenRadial.RadialDistinctThingsAround(pawn.Position, pawn.Map, 14.9f, true).Any(x => x.def == RW_DefOf.RW_NanotechPurifier && x.TryGetComp<CompPowerTrader>().PowerOn))
+				{
+					return 0f;
+				}
+			}
+			var resistance = 1f - pawn.GetStatValue(RW_DefOf.RW_RadiationResistance);
+			return Mathf.Clamp01(resistance);
 		}
 		public static bool IsCavernBiome(this BiomeDef biomeDef)
         {

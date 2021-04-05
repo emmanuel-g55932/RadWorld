@@ -108,17 +108,13 @@ namespace RadWorld
             {
                 float num = 0.028758334f;
                 num *= caravan.Biome.GetNuclearModifier();
-                var resistance = 1f - p.GetStatValue(RW_DefOf.RW_RadiationResistance);
-                if (resistance < 0)
-                {
-                    resistance = 0;
-                }
+                var resistance = p.GetRadiationImpactMultiplier();
                 num *= resistance;
                 if (num != 0f)
                 {
                     float num2 = Mathf.Lerp(0.85f, 1.15f, Rand.ValueSeeded(p.thingIDNumber ^ 0x46EDC5D));
                     num *= num2;
-                    HealthUtility.AdjustSeverity(p, HediffDefOf.ToxicBuildup, num);
+                    HealthUtility.AdjustSeverity(p, RW_DefOf.RW_Radiation, num);
                 }
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using FactionBaseGeneration;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -47,6 +48,14 @@ namespace RadWorld
 		public static HediffDef RW_EnlargedMuscles;
 		public static HediffDef RW_WeakenedMuscles;
 		public static HediffDef RW_ScalySkin;
+		public static ThingDef RW_IrradiatedBear;
 
+		public static FactionDef RW_MutantRough;
+		public static TraitDef RW_MutantBlood;
+		public static HediffDef RW_MutantBrain;
+		public static FactionDef RW_VaultRough;
+		public static LocationDef RW_VaultLocation;
+		public static PawnKindDef RW_Vault_Villager;
+		public static FactionDef RW_VaultNatives;
 	}
 }

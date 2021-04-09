@@ -28,14 +28,30 @@ namespace RadWorld
     [HarmonyPatch(typeof(TileFinder), nameof(TileFinder.IsValidTileForNewSettlement))]
     public static class IsValidTileForNewSettlement_Patch
     {
+        public static bool mustBeOnCavern;
         public static void Postfix(ref bool __result, int tile, StringBuilder reason = null)
         {
+            Tile tile2 = Find.WorldGrid[tile];
+            if (mustBeOnCavern)
+            {
+                __result = RW_Utils.IsCavernBiome(tile2.biome);
+                return;
+            }
             if (RandomSettlementTileFor_Patch.curFaction != null)
             {
-                Tile tile2 = Find.WorldGrid[tile];
-                if (!RW_Utils.IsCavernBiome(tile2.biome))
+                if (RandomSettlementTileFor_Patch.curFaction.def != RW_DefOf.RW_MutantRough)
                 {
-                    __result = false;
+                    if (!RW_Utils.IsCavernBiome(tile2.biome))
+                    {
+                        __result = false;
+                    }
+                }
+                else
+                {
+                    if (RW_Utils.IsCavernBiome(tile2.biome))
+                    {
+                        __result = false;
+                    }
                 }
             }
         }
@@ -133,14 +149,16 @@ namespace RadWorld
         }
     }
 
-    [HarmonyPatch(typeof(Need_Outdoors), "Disabled", MethodType.Getter)]
-    public static class DisabledPatch
+
+
+    [HarmonyPatch(typeof(BiomeDef), "IsPackAnimalAllowed")]
+    public static class Patch_IsPackAnimalAllowed
     {
-        public static void Postfix(ref bool __result, Need_Outdoors __instance, Pawn ___pawn)
+        public static void Postfix(BiomeDef __instance, ref bool __result, ThingDef pawn)
         {
-            if (___pawn.Map?.Biome.IsCavernBiome() ?? false)
+            if (!__instance.IsCavernBiome() && pawn != RW_DefOf.RW_IrradiatedBear)
             {
-                __result = true;
+                __result = false;
             }
         }
     }

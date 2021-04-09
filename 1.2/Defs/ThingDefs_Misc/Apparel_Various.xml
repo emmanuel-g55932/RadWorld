@@ -60,10 +60,6 @@
 			<layers>
 				<li>Middle</li>
 			</layers>
-			<tags>
-				<li>IndustrialBasic</li>
-				<li>Neolithic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Worker</li>
 				<li>Soldier</li>
@@ -80,7 +76,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1</drawSize>
 		</graphicData>
-		<techLevel>Neolithic</techLevel>
+		<techLevel>Industrial</techLevel>
 		<costList>
 			<Silver>40</Silver>
 			<Steel>20</Steel>
@@ -130,10 +126,6 @@
 			<layers>
 				<li>Middle</li>
 			</layers>
-			<tags>
-				<li>IndustrialBasic</li>
-				<li>Neolithic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Worker</li>
 				<li>Soldier</li>
@@ -150,7 +142,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1</drawSize>
 		</graphicData>
-		<techLevel>Neolithic</techLevel>
+		<techLevel>Industrial</techLevel>
 		<costList>
 			<Silver>40</Silver>
 			<Steel>20</Steel>
@@ -200,10 +192,6 @@
 			<layers>
 				<li>Middle</li>
 			</layers>
-			<tags>
-				<li>IndustrialBasic</li>
-				<li>Neolithic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Worker</li>
 				<li>Soldier</li>
@@ -220,7 +208,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1</drawSize>
 		</graphicData>
-		<techLevel>Neolithic</techLevel>
+		<techLevel>Spacer</techLevel>
 		<costList>
 			<Silver>80</Silver>
 			<Steel>65</Steel>
@@ -274,10 +262,6 @@
 			<layers>
 				<li>Middle</li>
 			</layers>
-			<tags>
-				<li>IndustrialBasic</li>
-				<li>Neolithic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Worker</li>
 				<li>Soldier</li>
@@ -294,7 +278,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1</drawSize>
 		</graphicData>
-		<techLevel>Neolithic</techLevel>
+		<techLevel>Spacer</techLevel>
 		<costList>
 			<Silver>80</Silver>
 			<Steel>65</Steel>
@@ -348,10 +332,6 @@
 			<layers>
 				<li>Middle</li>
 			</layers>
-			<tags>
-				<li>IndustrialBasic</li>
-				<li>Neolithic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Worker</li>
 				<li>Soldier</li>

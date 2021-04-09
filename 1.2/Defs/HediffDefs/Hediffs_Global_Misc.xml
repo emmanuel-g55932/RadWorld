@@ -121,6 +121,18 @@
 		</stages>
 	</HediffDef>
 
+  <HediffDef ParentName="ChronicDiseaseBase">
+    <defName>RW_MutantBrain</defName>
+    <label>mutant brain</label>
+    <labelNoun>a mutant brain</labelNoun>
+    <description>PLACEHOLDER</description>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.15</partEfficiencyOffset>
+      </li>
+    </stages>
+  </HediffDef>
+  
 	<HediffDef>
 		<defName>RW_RadiationResistanceHediff</defName>
 		<label>radiation resistance</label>

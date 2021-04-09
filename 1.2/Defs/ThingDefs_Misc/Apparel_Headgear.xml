@@ -5,7 +5,7 @@
 		<defName>RW_Apparel_DuctTapedGasMask</defName>
 		<label>duct taped gas mask</label>
 		<description>Old damaged gas mask barely being held together by duct tape.</description>
-		<techLevel>Industrial</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Things/Apparel/PatchedMask/PatchedMask</texPath>
@@ -69,9 +69,6 @@
 			<layers>
 				<li>Overhead</li>
 			</layers>
-			<tags>
-				<li>IndustrialMilitaryBasic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Soldier</li>
 			</defaultOutfitTags>
@@ -148,9 +145,6 @@
 			<layers>
 				<li>Overhead</li>
 			</layers>
-			<tags>
-				<li>IndustrialMilitaryBasic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Soldier</li>
 			</defaultOutfitTags>
@@ -227,9 +221,6 @@
 			<layers>
 				<li>Overhead</li>
 			</layers>
-			<tags>
-				<li>IndustrialMilitaryBasic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Soldier</li>
 			</defaultOutfitTags>
@@ -287,9 +278,6 @@
 			<layers>
 				<li>Overhead</li>
 			</layers>
-			<tags>
-				<li>IndustrialMilitaryBasic</li>
-			</tags>
 			<defaultOutfitTags>
 				<li>Soldier</li>
 			</defaultOutfitTags>

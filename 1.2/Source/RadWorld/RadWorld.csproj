@@ -31,6 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FactionBaseGeneration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblies\FactionBaseGeneration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,10 +52,13 @@
     <Compile Include="Comps\CompMutation.cs" />
     <Compile Include="Comps\CompGasMaskReloadable.cs" />
     <Compile Include="GameConditions\GameCondition_ToxicFalloutRadWorld.cs" />
+    <Compile Include="GenSteps\GenStep_AbandonedVault.cs" />
+    <Compile Include="GenSteps\GenStep_Vault.cs" />
     <Compile Include="HarmonyPatches\PawnPatches.cs" />
     <Compile Include="HarmonyPatches\RoovesPatches.cs" />
     <Compile Include="Hediffs\Hediff_Radiation.cs" />
     <Compile Include="ModExtensions\BiomeOptions.cs" />
+    <Compile Include="PawnGenOptions.cs" />
     <Compile Include="RW_Utils.cs" />
     <Compile Include="RW_DefOf.cs" />
     <Compile Include="GenSteps\GenStep_CavesUnderground.cs" />
@@ -64,6 +72,10 @@
     <Compile Include="Biome\CavernPerlin.cs" />
     <Compile Include="Stats\StatPart_MutationHediff.cs" />
     <Compile Include="Stats\StatPart_RadiationApparelProtection.cs" />
+    <Compile Include="ThoughtWorkers\ThoughtWorker_ScalySkin.cs" />
+    <Compile Include="ThoughtWorkers\ThoughtWorker_ExtraLeg.cs" />
+    <Compile Include="ThoughtWorkers\ThoughtWorker_ExtraArm.cs" />
+    <Compile Include="ThoughtWorkers\ThoughtWorker_MutantBlood.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">

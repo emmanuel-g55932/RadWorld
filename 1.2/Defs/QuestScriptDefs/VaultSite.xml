@@ -3,6 +3,8 @@
 
   <SitePartDef ParentName="Outpost">
     <defName>RW_VaultSite</defName>
+    <siteTexture>World/UI/QuestIcon</siteTexture>
+    <expandingIconTexture>World/UI/QuestIcon</expandingIconTexture>
     <workerClass>RadWorld.SitePartWorker_Vault</workerClass>
     <label>vault</label>
     <description>A vault.</description>
@@ -27,6 +29,8 @@
 
   <SitePartDef ParentName="Outpost">
     <defName>RW_AbandonedVaultSite</defName>
+    <siteTexture>World/UI/QuestIcon</siteTexture>
+    <expandingIconTexture>World/UI/QuestIcon</expandingIconTexture>
     <workerClass>RadWorld.SitePartWorker_AbandonedVault</workerClass>
     <label>vault</label>
     <description>A vault.</description>

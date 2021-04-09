@@ -15,4 +15,10 @@
 		<percentOfDestroyedWalls>0.05~0.1</percentOfDestroyedWalls>
 	</FactionBaseGeneration.LocationDef>
 	
+	<FactionBaseGeneration.LocationDef>
+		<defName>RW_AbandonedVault</defName>
+		<folderWithPresets>Presets/RW_VaultNatives/FactionBases</folderWithPresets>
+		<percentOfDamagedWalls>0.05~0.1</percentOfDamagedWalls>
+		<percentOfDamagedFurnitures>0.3~0.7</percentOfDamagedFurnitures>
+	</FactionBaseGeneration.LocationDef>
 </Defs>

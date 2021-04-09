@@ -105,7 +105,7 @@ namespace FactionBaseGeneration
         {
             return cell - offset;
         }
-        public static void DoSettlementGeneration(Map map, string path, LocationDef locationDef, Faction faction, bool disableFog)
+        public static HashSet<IntVec3> DoSettlementGeneration(Map map, string path, LocationDef locationDef, Faction faction, bool disableFog)
         {
             Log.Message("DoSettlementGeneration");
             if (faction == Faction.OfPlayer || faction == null)
@@ -366,7 +366,7 @@ namespace FactionBaseGeneration
                     }
                 }
             }
-            if (locationDef != null && (locationDef.percentOfDamagedWalls.HasValue || locationDef.percentOfDestroyedWalls.HasValue))
+            if (locationDef != null && (locationDef.percentOfDamagedWalls.HasValue || locationDef.percentOfDestroyedWalls.HasValue) || locationDef.percentOfDamagedFurnitures.HasValue)
             {
                 var walls = map.listerThings.AllThings.Where(x => x.def.IsEdifice() && x.def.defName.ToLower().Contains("wall")).ToList();
                 if (locationDef.percentOfDestroyedWalls.HasValue)
@@ -389,12 +389,27 @@ namespace FactionBaseGeneration
                     for (int num = wallsToDamage.Count - 1; num >= 0; num--)
                     {
                         var damagePercent = Rand.Range(0.3f, 0.6f);
-                        var hitpointsToTake = (int)((damagePercent * wallsToDamage[num].MaxHitPoints) / 100f);
+                        var hitpointsToTake = (int)(wallsToDamage[num].MaxHitPoints * damagePercent);
                         wallsToDamage[num].HitPoints = hitpointsToTake;
                     }
 
                     Log.Message($"wall count: {walls.Count()}, percent: {percent}, countTotake: {countToTake}");
                 }
+                if (locationDef.percentOfDamagedFurnitures.HasValue)
+                {
+                    var furnitures = map.listerThings.AllThings.Where(x => !walls.Contains(x) && x.def.IsBuildingArtificial).ToList();
+                    var percent = locationDef.percentOfDamagedFurnitures.Value.RandomInRange * 100f;
+                    var countToTake = (int)((percent * furnitures.Count()) / 100f);
+                    var furnituresToDamage = furnitures.InRandomOrder().Take(countToTake).ToList();
+                    for (int num = furnituresToDamage.Count - 1; num >= 0; num--)
+                    {
+                        var damagePercent = Rand.Range(0.3f, 0.6f);
+                        var hitpointsToTake = (int)(furnituresToDamage[num].MaxHitPoints * damagePercent);
+                        furnituresToDamage[num].HitPoints = hitpointsToTake;
+                    }
+                    Log.Message($"wall count: {walls.Count()}, percent: {percent}, countTotake: {countToTake}");
+                }
+
             }
             Pawn checker = map.mapPawns.PawnsInFaction(Faction.OfPlayer).FirstOrDefault();
             if (checker != null)
@@ -486,6 +501,7 @@ namespace FactionBaseGeneration
                     }
                 }
             }
+            return tilesToSpawnPawnsOnThem.Select(x => GetOffsetPosition(x, map.Center)).ToHashSet();
         }
 
         private static void TryDistributeTo(Thing thing, Map map, List<Thing> containers, bool setForbidden)

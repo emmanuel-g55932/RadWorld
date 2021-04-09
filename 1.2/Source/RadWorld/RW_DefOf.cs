@@ -55,7 +55,9 @@ namespace RadWorld
 		public static HediffDef RW_MutantBrain;
 		public static FactionDef RW_VaultRough;
 		public static LocationDef RW_VaultLocation;
+		public static LocationDef RW_AbandonedVault;
 		public static PawnKindDef RW_Vault_Villager;
 		public static FactionDef RW_VaultNatives;
+		public static PawnKindDef RW_IrradiatedMegaspider;
 	}
 }

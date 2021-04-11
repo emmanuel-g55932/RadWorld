@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using FactionBaseGeneration;
 using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
@@ -149,7 +150,39 @@ namespace RadWorld
         }
     }
 
+    [HarmonyPatch(typeof(CaravanEnterMapUtility), "FindNearEdgeCell")]
+    public static class FindNearEdgeCellPatch
+    {
+        public static bool Prefix(ref IntVec3 __result, Map map, Predicate<IntVec3> extraCellValidator)
+        {
+            Predicate<IntVec3> baseValidator = (IntVec3 x) => x.Standable(map);// && !x.Fogged(map);
+            Faction hostFaction = map.ParentFaction;
+            if (CellFinder.TryFindRandomEdgeCellWith((IntVec3 x) => baseValidator(x) && (extraCellValidator == null || extraCellValidator(x)) && ((hostFaction != null && map.reachability.CanReachFactionBase(x, hostFaction)) || (hostFaction == null && map.reachability.CanReachBiggestMapEdgeRoom(x))), map, CellFinder.EdgeRoadChance_Neutral, out IntVec3 result))
+            {
+                __result = CellFinder.RandomClosewalkCellNear(result, map, 5);
+                map.GetComponent<MapComponentGeneration>().ReFog = true;
+                return false;
+            }
+            if (extraCellValidator != null && CellFinder.TryFindRandomEdgeCellWith((IntVec3 x) => baseValidator(x) && extraCellValidator(x), map, CellFinder.EdgeRoadChance_Neutral, out result))
+            {
+                __result = CellFinder.RandomClosewalkCellNear(result, map, 5);
+                map.GetComponent<MapComponentGeneration>().ReFog = true;
+                return false;
 
+            }
+            if (CellFinder.TryFindRandomEdgeCellWith(baseValidator, map, CellFinder.EdgeRoadChance_Neutral, out result))
+            {
+                __result = CellFinder.RandomClosewalkCellNear(result, map, 5);
+                map.GetComponent<MapComponentGeneration>().ReFog = true;
+                return false;
+
+            }
+            Log.Warning("Could not find any valid edge cell.");
+            __result = CellFinder.RandomCell(map);
+            map.GetComponent<MapComponentGeneration>().ReFog = true;
+            return false;
+        }
+    }
 
     [HarmonyPatch(typeof(BiomeDef), "IsPackAnimalAllowed")]
     public static class Patch_IsPackAnimalAllowed

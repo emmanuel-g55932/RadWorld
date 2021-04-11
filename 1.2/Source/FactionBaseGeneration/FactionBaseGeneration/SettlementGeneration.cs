@@ -103,7 +103,7 @@ namespace FactionBaseGeneration
 
         public static IntVec3 GetOffsetPosition(IntVec3 cell, IntVec3 offset)
         {
-            return cell - offset;
+            return cell + offset;
         }
         public static HashSet<IntVec3> DoSettlementGeneration(Map map, string path, LocationDef locationDef, Faction faction, bool disableFog)
         {
@@ -158,14 +158,15 @@ namespace FactionBaseGeneration
             var cells = new List<IntVec3>(tilesToSpawnPawnsOnThem);
             cells.AddRange(buildings.Select(x => x.Position).ToList());
             var centerCell = GetCellCenterFor(cells);
-
+            var offset = map.Center - centerCell;
+            Log.Message($"centerCell: {centerCell}, map.Center: {map.Center}, offset: {offset}");
             if (pawns != null && pawns.Count > 0)
             {
                 foreach (var pawn in pawns)
                 {
                     try
                     {
-                        var position = GetOffsetPosition(pawn.Position, map.Center);
+                        var position = GetOffsetPosition(pawn.Position, offset);
                         if (GenGrid.InBounds(position, map))
                         {
                             GenSpawn.Spawn(pawn, position, map, WipeMode.Vanish);
@@ -183,7 +184,7 @@ namespace FactionBaseGeneration
             {
                 foreach (var tile in tilesToSpawnPawnsOnThem)
                 {
-                    var position = GetOffsetPosition(tile, map.Center);
+                    var position = GetOffsetPosition(tile, offset);
                     try
                     {
                         if (GenGrid.InBounds(position, map))
@@ -209,7 +210,7 @@ namespace FactionBaseGeneration
             {
                 foreach (var building in buildings)
                 {
-                    var position = GetOffsetPosition(building.Position, map.Center);
+                    var position = GetOffsetPosition(building.Position, offset);
 
                     foreach (var pos in GenRadial.RadialCellsAround(position, radiusToClear, true))
                     {
@@ -270,7 +271,7 @@ namespace FactionBaseGeneration
 
                 foreach (var building in buildings)
                 {
-                    var position = GetOffsetPosition(building.Position, map.Center);
+                    var position = GetOffsetPosition(building.Position, offset);
                     try
                     {
                         if (GenGrid.InBounds(position, map))
@@ -295,7 +296,7 @@ namespace FactionBaseGeneration
                 {
                     try
                     {
-                        var position = GetOffsetPosition(plant.Position, map.Center);
+                        var position = GetOffsetPosition(plant.Position, offset);
 
                         if (map.fertilityGrid.FertilityAt(position) >= plant.def.plant.fertilityMin)
                         {
@@ -316,7 +317,7 @@ namespace FactionBaseGeneration
                 {
                     try
                     {
-                        var position = GetOffsetPosition(thing.Position, map.Center);
+                        var position = GetOffsetPosition(thing.Position, offset);
                         GenSpawn.Spawn(thing, position, map, WipeMode.Vanish);
                         if (!(thing is Filth) && !(thing is Building) && !(thing is Plant) && !(thing is Pawn))
                         {
@@ -335,7 +336,7 @@ namespace FactionBaseGeneration
                 {
                     try
                     {
-                        var position = GetOffsetPosition(terrain.Key, map.Center);
+                        var position = GetOffsetPosition(terrain.Key, offset);
                         if (GenGrid.InBounds(position, map))
                         {
                             map.terrainGrid.SetTerrain(position, terrain.Value);
@@ -353,7 +354,7 @@ namespace FactionBaseGeneration
                 {
                     try
                     {
-                        var position = GetOffsetPosition(roof.Key, map.Center);
+                        var position = GetOffsetPosition(roof.Key, offset);
 
                         if (GenGrid.InBounds(position, map))
                         {
@@ -501,7 +502,7 @@ namespace FactionBaseGeneration
                     }
                 }
             }
-            return tilesToSpawnPawnsOnThem.Select(x => GetOffsetPosition(x, map.Center)).ToHashSet();
+            return tilesToSpawnPawnsOnThem.Select(x => GetOffsetPosition(x, offset)).ToHashSet();
         }
 
         private static void TryDistributeTo(Thing thing, Map map, List<Thing> containers, bool setForbidden)

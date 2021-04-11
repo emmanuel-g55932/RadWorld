@@ -53,6 +53,7 @@
     <Compile Include="Comps\CompGasMaskReloadable.cs" />
     <Compile Include="GameConditions\GameCondition_ToxicFalloutRadWorld.cs" />
     <Compile Include="GenSteps\GenStep_AbandonedVault.cs" />
+    <Compile Include="GenSteps\GenStep_CaveHives.cs" />
     <Compile Include="GenSteps\GenStep_Vault.cs" />
     <Compile Include="HarmonyPatches\PawnPatches.cs" />
     <Compile Include="HarmonyPatches\RoovesPatches.cs" />

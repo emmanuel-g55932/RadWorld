@@ -21,6 +21,14 @@
 						<RW_RadiationResistance>1</RW_RadiationResistance>
 					</value>
 				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="Megaspider"]/statBases</xpath>
+					<value>
+						<RW_RadiationResistance>1</RW_RadiationResistance>
+					</value>
+				</li>
+				
 				<li Class="PatchOperationReplace">
 					<xpath>/Defs/ThingDef[defName="Glowstool"]/plant/harvestYield</xpath>
 					<value>

@@ -17,13 +17,15 @@
 			<li>ScenParts</li>
 			<li>RW_PlantsUnderground</li>
 			<li>Animals</li>
-			<li>CaveHives</li>
 			<li>Fog</li>
 		</genSteps>
 	</MapGeneratorDef>
 
 	<MapGeneratorDef ParentName="RW_CavernMapCommonBase">
 		<defName>RW_CavernBase_Player</defName>
+		<genSteps>
+			<li>RW_CaveHives</li>
+		</genSteps>
 	</MapGeneratorDef>
 
 	<MapGeneratorDef ParentName="RW_CavernMapCommonBase">
@@ -40,13 +42,13 @@
 			<li>RocksFromGrid_NoMinerals</li>
 		</genSteps>
 	</MapGeneratorDef>
-	
+
 	<GenStepDef>
 		<defName>RW_CavesUnderground</defName>
 		<order>12</order>
 		<genStep Class="RadWorld.GenStep_Caves"/>
 	</GenStepDef> 
-	
+
 	<GenStepDef>
 		<defName>RW_RocksFromGridUnderground</defName>
 		<order>200</order>
@@ -57,25 +59,24 @@
 		<order>210</order>
 		<genStep Class="RadWorld.GenStep_TerrainUnderground"/>
 	</GenStepDef>
-	
+
 	<GenStepDef>
 		<defName>RW_FindLocationUnderground</defName>
 		<order>600</order>
 		<genStep Class="RadWorld.GenStep_FindLocationUnderground"/>
 	</GenStepDef>
-	
+
 	<GenStepDef>
 		<defName>RW_PlantsUnderground</defName>
 		<order>800</order>
 		<genStep Class="RadWorld.GenStep_PlantsUnderground"/>
 	</GenStepDef> 
 
-<!--
-GenStep_CavesUnderground
-GenStep_RocksFromGridUnderground
-GenStep_TerrainUnderground
-GenStep_FindLocationUnderground
-GenStep_PlantsUnderground
--->
+	<GenStepDef>
+		<defName>RW_CaveHives</defName>
+		<order>1100</order>
+		<genStep Class="RadWorld.GenStep_CaveHives"/>
+	</GenStepDef>
+
 
 </Defs>

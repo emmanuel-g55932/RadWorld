@@ -1,13 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef ParentName="MakeableDrugBase">
     <defName>RW_RadPills</defName>
     <label>rad pills</label>
     <description>rad pills</description>
-    <descriptionHyperlinks>
-      <HediffDef>RW_RadPillsAddiction</HediffDef>
-    </descriptionHyperlinks>
     <graphicData>
       <texPath>Things/Item/Resource/Manufactured/RadPill</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
@@ -31,13 +28,13 @@
           <offset>(0.18,0,0)</offset>
         </northDefault>
       </ingestHoldOffsetStanding>
-      <ingestCommandString>Inject {0}</ingestCommandString>
-      <ingestReportString>Injecting {0}.</ingestReportString>
+      <ingestCommandString>Swallow {0}</ingestCommandString>
+      <ingestReportString>Swallowing {0}.</ingestReportString>
       <useEatingSpeedStat>false</useEatingSpeedStat>
       <chairSearchRadius>0</chairSearchRadius>
       <outcomeDoers>
         <li Class="RadWorld.IngestionOutcomeDoer_AdjustHediff">
-          <hediffDef>ToxicBuildup</hediffDef>
+          <hediffDef>RW_Radiation</hediffDef>
           <toleranceChemical>RW_RadPills</toleranceChemical>
           <severity>-0.2</severity>
         </li>
@@ -51,19 +48,14 @@
       <soundWorking>Recipe_Drug</soundWorking>
     </recipeMaker>
     <costList>
-      <Neutroamine>2</Neutroamine>
-      <Yayo>1</Yayo>
+      <RW_RadFungusHarvested>5</RW_RadFungusHarvested>
+      <MedicineHerbal>2</MedicineHerbal>
     </costList>
     <comps>
       <li Class="CompProperties_Drug">
         <chemical>RW_RadPills</chemical>
-        <addictiveness>0.026</addictiveness>
-        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
-        <needLevelOffset>0.9</needLevelOffset>
-        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
         <listOrder>200</listOrder>
-        <overdoseSeverityOffset>0.18~0.35</overdoseSeverityOffset>
-        <largeOverdoseChance>0.005</largeOverdoseChance>
       </li>
     </comps>
   </ThingDef>
@@ -71,23 +63,16 @@
   <ChemicalDef>
     <defName>RW_RadPills</defName>
     <label>rad pills</label>
-    <addictionHediff>RW_RadPillsAddiction</addictionHediff>
+	<toleranceHediff>RW_RadPillsTolerance</toleranceHediff>
+	<addictionHediff>RW_RadPillsAddiction</addictionHediff>
   </ChemicalDef>
   
-  <NeedDef ParentName="DrugAddictionNeedBase">
-    <defName>Chemical_RW_RadPills</defName>
-    <needClass>Need_Chemical</needClass>
-    <label>rad pills</label>
-    <description>Because of a rad pills addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
-    <fallPerDay>0.333</fallPerDay>
-    <listPriority>45</listPriority>
-  </NeedDef>
-
+  
   <HediffDef ParentName="AddictionBase">
     <defName>RW_RadPillsAddiction</defName>
     <label>rad pills addiction</label>
-    <description>A chemical addiction to rad pills. Long-term presence of rad pills has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.
-\nWithout regular doses of rad pills, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <description>A chemical addiction to go-juice. Long-term presence of go-juice has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.
+\nWithout regular doses of go-juice, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
     <hediffClass>Hediff_Addiction</hediffClass>
     <causesNeed>Chemical_RW_RadPills</causesNeed>
     <comps>
@@ -140,22 +125,14 @@
     </stages>
   </HediffDef>
   
-  <ThoughtDef>
-    <defName>RW_RadPillsWithdrawal</defName>
-    <workerClass>ThoughtWorker_Hediff</workerClass>
-    <hediff>RW_RadPillsAddiction</hediff>
-    <validWhileDespawned>true</validWhileDespawned>
-    <stages>
-      <li>
-        <visible>false</visible>
-      </li>
-      <li>
-        <label>rad pills withdrawal</label>
-        <description>I'm all fuzzy and can't think straight. My limbs feel heavy, I'm tired and hungry, everything hurts. And why won't my eyes focus properly?</description>
-        <baseMoodEffect>-22</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_RW_RadPills</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>rad pills</label>
+    <description>Because of a rad pills addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <fallPerDay>0.333</fallPerDay>
+    <listPriority>45</listPriority>
+  </NeedDef>
 
   <HediffDef ParentName="DrugToleranceBase">
     <defName>RW_RadPillsTolerance</defName>

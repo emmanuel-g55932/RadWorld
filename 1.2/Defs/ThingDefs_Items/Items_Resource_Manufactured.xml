@@ -22,7 +22,7 @@
 			<DeteriorationRate>2.0</DeteriorationRate>
 		</statBases>
 		<costList>
-			<RW_RadFungus>2</RW_RadFungus>
+			<RW_RadFungusHarvested>2</RW_RadFungusHarvested>
 			<RW_RadPills>1</RW_RadPills>
 			<Cloth>5</Cloth>
 			<Steel>5</Steel>

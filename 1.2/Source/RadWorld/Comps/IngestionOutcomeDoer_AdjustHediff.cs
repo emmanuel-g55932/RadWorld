@@ -17,16 +17,23 @@ namespace RadWorld
 		public ChemicalDef toleranceChemical;
 
 		private bool divideByBodySize;
-
 		protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
 		{
-			float effect = severity;
-			if (divideByBodySize)
-			{
-				effect /= pawn.BodySize;
+			if (pawn.def.GetStatValueAbstract(RW_DefOf.RW_RadiationResistance) <= 0 && (!pawn.story?.traits?.HasTrait(RW_DefOf.RW_MutantBlood) ?? false))
+            {
+				float effect = severity;
+				if (divideByBodySize)
+				{
+					effect /= pawn.BodySize;
+				}
+				AddictionUtility.ModifyChemicalEffectForToleranceAndBodySize(pawn, toleranceChemical, ref effect);
+				for (var i = 0; i < ingested.stackCount; i++)
+				{
+					Log.Message($"Giving effect: {effect}");
+					HealthUtility.AdjustSeverity(pawn, hediffDef, effect);
+				}
 			}
-			AddictionUtility.ModifyChemicalEffectForToleranceAndBodySize(pawn, toleranceChemical, ref effect);
-			HealthUtility.AdjustSeverity(pawn, hediffDef, effect);
+
 		}
 
 		public override IEnumerable<StatDrawEntry> SpecialDisplayStats(ThingDef parentDef)

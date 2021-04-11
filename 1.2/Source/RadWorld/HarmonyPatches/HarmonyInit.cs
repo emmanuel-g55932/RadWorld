@@ -33,6 +33,19 @@ namespace RadWorld
                 }
             }
 
+            postfix = AccessTools.Method(typeof(HarmonyPatches), "TryResolveRaidSpawnCenterPostfix");
+            foreach (var type in typeof(PawnsArrivalModeWorker).AllSubclassesNonAbstract())
+            {
+                var methodToPatch = AccessTools.Method(type, "TryResolveRaidSpawnCenter");
+                if (methodToPatch != null)
+                {
+                    harmony.Patch(methodToPatch, new HarmonyMethod(prefix), new HarmonyMethod(postfix));
+                }
+                else
+                {
+                    Log.Error("Can't patch " + type);
+                }
+            }
 
             //var tryIssueJobPackage_Track = AccessTools.Method(typeof(HarmonyPatches), "TryIssueJobPackage_Track");
             //foreach (var type in typeof(ThinkNode).AllSubclassesNonAbstract())
@@ -69,6 +82,40 @@ namespace RadWorld
         {
             Patch_GenerateStartingApparelFor.generateRadProtectiveGear = false;
         }
+
+        private static void TryResolveRaidSpawnCenterPostfix(PawnsArrivalModeWorker __instance, bool __result, IncidentParms parms)
+        {
+            Log.Message("PawnsArrivalModeWorker: " + __instance + " - " + __result);
+        }
+    }
+
+    [HarmonyPatch(typeof(RCellFinder), "TryFindRandomPawnEntryCell")]
+    internal static class Patch_TryFindRandomPawnEntryCell
+    {
+        private static bool Prefix(ref bool __result, ref IntVec3 result, Map map, float roadChance, bool allowFogged = false, Predicate<IntVec3> extraValidator = null)
+        {
+            if (map.Biome.IsCavernBiome())
+            {
+                __result = CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => c.Standable(map) && map.reachability.CanReachColony(c)
+                    && c.GetRoom(map).TouchesMapEdge && (allowFogged || !c.Fogged(map)) && (extraValidator == null || extraValidator(c)), map, roadChance, out result);
+                return false;
+            }
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(DropCellFinder), "RandomDropSpot")]
+    internal static class Patch_RandomDropSpot
+    {
+        private static bool Prefix(ref IntVec3 __result, Map map)
+        {
+            if (map.Biome.IsCavernBiome())
+            {
+                __result = CellFinderLoose.RandomCellWith((IntVec3 c) => c.Standable(map) && !c.Fogged(map), map);
+                return false;
+            }
+            return true;
+        }
     }
 
     [HarmonyPatch(typeof(StartingPawnUtility), "NewGeneratedStartingPawn")]
@@ -91,20 +138,23 @@ namespace RadWorld
         public static bool generateRadProtectiveGear;
         private static void Postfix(Pawn pawn, PawnGenerationRequest request)
         {
-            if (request.Tile != -1)
+            if (request.Tile != -1 || Patch_NewGeneratedStartingPawn.generationIsActive)
             {
-                Tile tile = Find.WorldGrid[request.Tile];
-                Log.Message(pawn + " - " + pawn.Map + " - " + request.Tile + " - tile: " + tile + " biome: " + tile?.biome);
-                if (pawn.Faction != null && (tile.biome != null && tile.biome.GetNuclearModifier() > 0 || pawn.Faction.def == RW_DefOf.RW_VaultRough) && pawn.Faction.def != RW_DefOf.RW_MutantRough && pawn.apparel != null && (generateRadProtectiveGear || Patch_NewGeneratedStartingPawn.generationIsActive && Rand.Chance(0.3f)))
+                if (request.Tile != -1)
                 {
-                    var allApparelPairs = ThingStuffPair.AllWith((ThingDef td) => td.IsApparel && (int)pawn.Faction.def.techLevel >= (int)td.techLevel && td.GetStatValueAbstract(RW_DefOf.RW_RadiationResistanceOffset) > 0);
-                    Log.Message(pawn + " - pawn.Faction: " + pawn.Faction.def.techLevel);
-
-                    var hats = allApparelPairs.Where(x => IsHeadgear(x.thing) && CanUseStuff(pawn, x) && x.thing.apparel.CorrectGenderForWearing(pawn.gender));
-                    foreach (var ap in hats)
+                    Tile tile = Find.WorldGrid[request.Tile];
+                    if (tile.biome != null && tile.biome.GetNuclearModifier() <= 0 || pawn.Faction.def != RW_DefOf.RW_VaultRough)
                     {
-                        Log.Message("Hat: " + ap.thing + " - " + ap.thing.techLevel + " - " + IsHeadgear(ap.thing));
+                        return;
                     }
+                }
+                if (pawn.Faction != null && pawn.Faction.def != RW_DefOf.RW_MutantRough && pawn.apparel != null 
+                    && (generateRadProtectiveGear || Patch_NewGeneratedStartingPawn.generationIsActive && Rand.Chance(0.3f)))
+                {
+                    var allApparelPairs = ThingStuffPair.AllWith((ThingDef td) => td.IsApparel && (int)pawn.Faction.def.techLevel >= (int)td.techLevel && td.techLevel < TechLevel.Archotech 
+                        && td.GetStatValueAbstract(RW_DefOf.RW_RadiationResistanceOffset) > 0);
+                    var hats = allApparelPairs.Where(x => IsHeadgear(x.thing) && CanUseStuff(pawn, x) && x.thing.apparel.CorrectGenderForWearing(pawn.gender));
+
                     if (hats.TryRandomElementByWeight(pa => pa.Commonality, out var hatPair))
                     {
                         var hat = ThingMaker.MakeThing(hatPair.thing, hatPair.stuff) as Apparel;
@@ -117,22 +167,15 @@ namespace RadWorld
                             {
                                 var fuel = ThingMaker.MakeThing(comp.Props.ammoDef);
                                 comp.ReloadFrom(fuel);
-                                Log.Message("Reloading: " + comp + " - " + comp.RemainingCharges);
                             }
                         }
-                        Log.Message(pawn + " 0 is wearing " + hat);
                     }
 
                     var apparels = allApparelPairs.Where(x => !hats.Any(y => x.thing == y.thing) && CanUseStuff(pawn, x) && x.thing.apparel.CorrectGenderForWearing(pawn.gender));
-                    foreach (var ap in apparels)
-                    {
-                        Log.Message("Apparel: " + ap.thing + " - " + ap.thing.techLevel + " - " + IsHeadgear(ap.thing));
-                    }
                     if (apparels.TryRandomElementByWeight(pa => pa.Commonality, out var apparelPair))
                     {
                         var apparel = ThingMaker.MakeThing(apparelPair.thing, apparelPair.stuff) as Apparel;
                         pawn.apparel.Wear(apparel, false);
-                        Log.Message(pawn + " 1 is wearing " + apparel);
                     }
                 }
             }

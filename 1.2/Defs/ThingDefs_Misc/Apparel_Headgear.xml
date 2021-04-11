@@ -26,8 +26,8 @@
 			<Mass>1.24</Mass>
 			<SellPriceFactor>0.70</SellPriceFactor>
 			<DeteriorationRate>4.0</DeteriorationRate>
-			<RW_RadiationResistanceOffset>0.15</RW_RadiationResistanceOffset>
-			<RW_RadiationResistancePoweredOffset>0.10</RW_RadiationResistancePoweredOffset>
+			<RW_RadiationResistanceOffset>0.05</RW_RadiationResistanceOffset>
+			<RW_RadiationResistancePoweredOffset>0.15</RW_RadiationResistancePoweredOffset>
 			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.072</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.03</ArmorRating_Heat>
@@ -101,8 +101,8 @@
 			<Mass>1</Mass>
 			<SellPriceFactor>0.70</SellPriceFactor>
 			<DeteriorationRate>2.0</DeteriorationRate>
-			<RW_RadiationResistanceOffset>0.35</RW_RadiationResistanceOffset>
-			<RW_RadiationResistancePoweredOffset>0.15</RW_RadiationResistancePoweredOffset>
+			<RW_RadiationResistanceOffset>0.15</RW_RadiationResistanceOffset>
+			<RW_RadiationResistancePoweredOffset>0.35</RW_RadiationResistancePoweredOffset>
 			<ArmorRating_Sharp>0.63</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.31</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.42</ArmorRating_Heat>
@@ -177,8 +177,8 @@
 			<Mass>1</Mass>
 			<SellPriceFactor>0.70</SellPriceFactor>
 			<DeteriorationRate>2.0</DeteriorationRate>
-			<RW_RadiationResistanceOffset>0.35</RW_RadiationResistanceOffset>
-			<RW_RadiationResistancePoweredOffset>0.15</RW_RadiationResistancePoweredOffset>
+			<RW_RadiationResistanceOffset>0.15</RW_RadiationResistanceOffset>
+			<RW_RadiationResistancePoweredOffset>0.35</RW_RadiationResistancePoweredOffset>
 			<ArmorRating_Sharp>0.63</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.31</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.42</ArmorRating_Heat>

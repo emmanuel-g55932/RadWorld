@@ -69,6 +69,11 @@
 			<harvestWork>1400</harvestWork>
 			<harvestYield>50</harvestYield>
 			<wildClusterWeight>35</wildClusterWeight>
+			<sowWork>170</sowWork>
+			<sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
 		</plant>
 	</ThingDef>
 
@@ -93,7 +98,7 @@
 			<fertilityMin>0.01</fertilityMin>
 			<fertilitySensitivity>0.15</fertilitySensitivity>
 			<growDays>7</growDays>
-			<harvestYield>3</harvestYield>
+			<harvestYield>1</harvestYield>
 			<harvestTag>Standard</harvestTag>
 			<harvestedThingDef>RW_RadFungusHarvested</harvestedThingDef>
 			<maxMeshCount>4</maxMeshCount>
@@ -104,7 +109,6 @@
 			<wildClusterWeight>5</wildClusterWeight>
 			<purpose>Food</purpose>
 			<sowWork>170</sowWork>
-			<sowMinSkill>6</sowMinSkill>
 			<sowTags>
 				<li>Ground</li>
 				<li>Hydroponic</li>

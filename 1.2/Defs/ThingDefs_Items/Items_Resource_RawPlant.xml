@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 
@@ -24,6 +24,13 @@
       <preferability>RawTasty</preferability>
       <tasteThought></tasteThought>
       <foodType>VegetableOrFruit</foodType>
+      <outcomeDoers>
+        <li Class="RadWorld.IngestionOutcomeDoer_AdjustHediff">
+          <hediffDef>RW_Radiation</hediffDef>
+          <toleranceChemical>RW_RadPills</toleranceChemical>
+          <severity>0.15</severity>
+        </li>
+      </outcomeDoers>
     </ingestible>
   </ThingDef>
   
@@ -39,10 +46,16 @@
     <statBases>
       <MarketValue>1.1</MarketValue>
       <Nutrition>0.05</Nutrition>
-
     </statBases>
     <ingestible>
       <foodType>Seed</foodType>
+      <outcomeDoers>
+        <li Class="RadWorld.IngestionOutcomeDoer_AdjustHediff">
+          <hediffDef>RW_Radiation</hediffDef>
+          <toleranceChemical>RW_RadPills</toleranceChemical>
+          <severity>0.015</severity>
+        </li>
+      </outcomeDoers>
     </ingestible>
     <comps>
       <li Class="CompProperties_Rottable">

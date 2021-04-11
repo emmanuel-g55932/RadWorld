@@ -18,6 +18,37 @@ namespace FactionBaseGeneration
 		{
 			Harmony harmony = new Harmony("ChickenPlucker.FactionBaseGeneration");
 			harmony.PatchAll();
+			var postfix = AccessTools.Method(typeof(HarmonyContainer), "Postfix");
+
+			foreach (var type in typeof(SymbolResolver).AllSubclassesNonAbstract())
+            {
+				try
+                {
+					var origMethod = AccessTools.Method(type, "CanResolve");
+					harmony.Patch(origMethod, null, new HarmonyMethod(postfix));
+				}
+				catch { };
+            }
+		}
+
+		public static void Postfix(bool __result, SymbolResolver __instance, ResolveParams rp)
+		{
+			Log.Message(__instance + " can resolve: " + __result);
+			Log.ResetMessageCount();
+		}
+	}
+
+	[HarmonyPatch(typeof(SymbolResolver_SinglePawn))]
+	[HarmonyPatch("TryFindSpawnCell")]
+	public static class Patch_TryFindSpawnCell
+	{
+		public static void Postfix(ResolveParams rp, out IntVec3 cell)
+		{
+			Map map = BaseGen.globalSettings.map;
+			var result = CellFinder.TryFindRandomCellInsideWith(rp.rect, (IntVec3 x) => x.Standable(map) && (rp.singlePawnSpawnCellExtraPredicate == null 
+			|| rp.singlePawnSpawnCellExtraPredicate(x)), out cell);
+			Log.Message("Result: " + result + " - " + rp.rect.CenterCell + " = " + rp.rect.Any(x => x.Standable(map)));
+
 		}
 	}
 
@@ -31,6 +62,16 @@ namespace FactionBaseGeneration
 			if (GetOrGenerateMapPatch.customSettlementGeneration)
 			{
 				Faction faction = rp.faction ?? Find.FactionManager.RandomEnemyFaction();
+				SettlementGeneration.DoSettlementGeneration(map, GetOrGenerateMapPatch.locationData.file.FullName, GetOrGenerateMapPatch.locationData.locationDef, faction, false);
+
+				Log.Message($"map.Center: {map.Center} - rp.rect.CenterCell: {rp.rect.CenterCell}");
+				rp.rect = rp.rect.MovedBy(map.Center - rp.rect.CenterCell);
+				Log.Message($"2 map.Center: {map.Center} - rp.rect.CenterCell: {rp.rect.CenterCell}");
+				//foreach (var cell in rp.rect.Cells)
+                //{
+				//	Log.Message(cell + " - " + cell.Standable(BaseGen.globalSettings.map));
+				//}
+
 				Lord singlePawnLord = rp.singlePawnLord ?? LordMaker.MakeNewLord(faction, new LordJob_DefendBase(faction, rp.rect.CenterCell), map);
 				TraverseParms traverseParms = TraverseParms.For(TraverseMode.PassDoors);
 				ResolveParams resolveParams = rp;
@@ -38,7 +79,7 @@ namespace FactionBaseGeneration
 				resolveParams.faction = faction;
 				resolveParams.singlePawnLord = singlePawnLord;
 				resolveParams.pawnGroupKindDef = (rp.pawnGroupKindDef ?? PawnGroupKindDefOf.Settlement);
-				resolveParams.singlePawnSpawnCellExtraPredicate = (rp.singlePawnSpawnCellExtraPredicate ?? ((Predicate<IntVec3>)((IntVec3 x) => map.reachability.CanReachMapEdge(x, traverseParms))));
+				//resolveParams.singlePawnSpawnCellExtraPredicate = (rp.singlePawnSpawnCellExtraPredicate ?? ((Predicate<IntVec3>)((IntVec3 x) => map.reachability.CanReachMapEdge(x, traverseParms))));
 				if (resolveParams.pawnGroupMakerParams == null)
 				{
 					resolveParams.pawnGroupMakerParams = new PawnGroupMakerParms();
@@ -126,26 +167,23 @@ namespace FactionBaseGeneration
 		}
 
 		public static bool customSettlementGeneration;
-		public static void Prefix(ref Caravan caravan, ref Settlement settlement, out LocationData __state)
+
+		public static LocationData locationData;
+
+		public static void Prefix(ref Caravan caravan, ref Settlement settlement)
 		{
 			var filePreset = SettlementGeneration.GetPresetFor(settlement, out LocationDef locationDef);
 			if (filePreset != null)
 			{
-				__state = new LocationData { file = filePreset, locationDef = locationDef };
+				locationData = new LocationData { file = filePreset, locationDef = locationDef };
 				customSettlementGeneration = true;
-
-			}
-			else
-			{
-				__state = null;
 			}
 		}
-		public static void Postfix(ref Caravan caravan, ref Settlement settlement, LocationData __state)
+		public static void Postfix(ref Caravan caravan, ref Settlement settlement)
 		{
-			if (__state != null)
+			if (customSettlementGeneration)
 			{
 				customSettlementGeneration = false;
-				SettlementGeneration.InitialiseLocationGeneration(settlement.Map, __state.file, __state.locationDef);
 			}
 		}
 	}

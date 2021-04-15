@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj": {}
+    "C:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj": {}
   },
   "projects": {
-    "c:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj": {
+    "C:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj",
+        "projectUniqueName": "C:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj",
         "projectName": "RadWorld",
-        "projectPath": "c:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj",
+        "projectPath": "C:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj",
         "packagesPath": "C:\\Users\\Vova\\.nuget\\packages\\",
-        "outputPath": "c:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\obj\\",
+        "outputPath": "C:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [

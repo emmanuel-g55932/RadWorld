@@ -32,38 +32,6 @@ namespace RadWorld
                     Log.Error("Can't patch " + type);
                 }
             }
-
-            postfix = AccessTools.Method(typeof(HarmonyPatches), "TryResolveRaidSpawnCenterPostfix");
-            foreach (var type in typeof(PawnsArrivalModeWorker).AllSubclassesNonAbstract())
-            {
-                var methodToPatch = AccessTools.Method(type, "TryResolveRaidSpawnCenter");
-                if (methodToPatch != null)
-                {
-                    harmony.Patch(methodToPatch, new HarmonyMethod(prefix), new HarmonyMethod(postfix));
-                }
-                else
-                {
-                    Log.Error("Can't patch " + type);
-                }
-            }
-
-            //var tryIssueJobPackage_Track = AccessTools.Method(typeof(HarmonyPatches), "TryIssueJobPackage_Track");
-            //foreach (var type in typeof(ThinkNode).AllSubclassesNonAbstract())
-            //{
-            //    try
-            //    {
-            //        var methodToPatch = AccessTools.Method(type, "TryIssueJobPackage");
-            //        if (methodToPatch != null)
-            //        {
-            //            harmony.Patch(methodToPatch, null, new HarmonyMethod(tryIssueJobPackage_Track));
-            //        }
-            //        else
-            //        {
-            //            Log.Error("Can't patch " + type);
-            //        }
-            //    }
-            //    catch { };
-            //}
         }
         private static void Prefix()
         {

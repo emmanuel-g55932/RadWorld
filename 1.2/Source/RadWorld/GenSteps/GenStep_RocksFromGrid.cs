@@ -44,7 +44,6 @@ namespace RadWorld
 
 		public override void Generate(Map map, GenStepParams parms)
 		{
-			Log.Message("GenStep_RocksFromGridUnderground");
 			if (!map.TileInfo.WaterCovered)
 			{
 				map.regionAndRoomUpdater.Enabled = false;

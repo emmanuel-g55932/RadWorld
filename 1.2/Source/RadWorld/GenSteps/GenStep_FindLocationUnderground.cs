@@ -16,7 +16,6 @@ namespace RadWorld
 
 		public override void Generate(Map map, GenStepParams parms)
 		{
-			Log.Message("GenStep_FindLocationUnderground");
 			DeepProfiler.Start("RebuildAllRegions");
 			map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
 			DeepProfiler.End();

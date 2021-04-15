@@ -65,14 +65,6 @@ namespace RadWorld
             //    catch { };
             //}
         }
-
-        private static void TryIssueJobPackage_Track(ThinkNode_JobGiver __instance, ThinkResult __result, Pawn pawn, JobIssueParams jobParams)
-        {
-        	if (pawn.RaceProps.Humanlike && __result.Job != null)
-        	{
-        		Log.Message(pawn + " gets " + __result.Job + " from " + __instance);
-        	}
-        }
         private static void Prefix()
         {
             Patch_GenerateStartingApparelFor.generateRadProtectiveGear = true;
@@ -81,11 +73,6 @@ namespace RadWorld
         private static void Postfix()
         {
             Patch_GenerateStartingApparelFor.generateRadProtectiveGear = false;
-        }
-
-        private static void TryResolveRaidSpawnCenterPostfix(PawnsArrivalModeWorker __instance, bool __result, IncidentParms parms)
-        {
-            Log.Message("PawnsArrivalModeWorker: " + __instance + " - " + __result);
         }
     }
 

@@ -29,7 +29,6 @@ namespace RadWorld
 				AddictionUtility.ModifyChemicalEffectForToleranceAndBodySize(pawn, toleranceChemical, ref effect);
 				for (var i = 0; i < ingested.stackCount; i++)
 				{
-					Log.Message($"Giving effect: {effect}");
 					HealthUtility.AdjustSeverity(pawn, hediffDef, effect);
 				}
 			}

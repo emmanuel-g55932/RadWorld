@@ -241,7 +241,6 @@ namespace RadWorld
                     __result = RW_DefOf.RW_CavernBase_Faction;
                 }
             }
-            Log.Message("Generating " + __result);
         }
     }
     

@@ -23,7 +23,6 @@ namespace RadWorld
 
 		public override void Generate(Map map, GenStepParams parms)
 		{
-			Log.Message("GenStep_TerrainUnderground");
 			BeachMaker.Init(map);
 			RiverMaker riverMaker = GenerateRiver(map);
 			List<IntVec3> list = new List<IntVec3>();

@@ -47,7 +47,6 @@ namespace RadWorld
 			Rand.PushState();
 			Rand.Seed = biomeDef.GetHashCode();
 			var randValue = Rand.Range(0.09f, 0.25f);
-			Log.Message("SetupRadiationNoise from " + biomeDef + " - " + biomeDef.GetHashCode() + " randValue: " + randValue);
 			ModuleBase moduleBase = new Perlin((double)(randValue * freqMultiplier), 2.0, 0.40000000596046448, 6, Rand.Range(0, int.MaxValue), QualityMode.High);
 			ModuleBase moduleBase2 = new RidgedMultifractal((double)(0.005f * freqMultiplier), 2.0, 6, Rand.Range(0, int.MaxValue), QualityMode.High);
 			moduleBase = new ScaleBias(0.5, 0.5, moduleBase);

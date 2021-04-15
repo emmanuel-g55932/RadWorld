@@ -9,7 +9,6 @@ namespace RadWorld
 
 		public override void Generate(Map map, GenStepParams parms)
 		{
-			Log.Message("GenStep_PlantsUnderground");
 			map.regionAndRoomUpdater.Enabled = false;
 			float currentPlantDensity = map.wildPlantSpawner.CurrentPlantDensity;
 			float currentWholeMapNumDesiredPlants = map.wildPlantSpawner.CurrentWholeMapNumDesiredPlants;

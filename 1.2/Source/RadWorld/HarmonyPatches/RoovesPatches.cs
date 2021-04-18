@@ -13,7 +13,7 @@ namespace RadWorld
     {
         private static void Postfix(RoofGrid __instance, ref IntVec3 c, ref RoofDef def, Map ___map)
         {
-            if (Current.ProgramState == ProgramState.Playing && Scribe.mode == LoadSaveMode.Inactive && ___map.Biome == RW_DefOf.RW_Cavern && def is null)
+            if (Current.ProgramState == ProgramState.Playing && Scribe.mode == LoadSaveMode.Inactive && ___map.Biome.IsCavernBiome() && def is null)
             {
                 ___map.roofGrid.SetRoof(c, RoofDefOf.RoofRockThin);
             }

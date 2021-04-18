@@ -42,7 +42,6 @@
 			<wildClusterRadius>8</wildClusterRadius>
 			<wildClusterWeight>24</wildClusterWeight>
 			<wildOrder>3</wildOrder>
-			<interferesWithRoof>true</interferesWithRoof>
 		</plant>
 	</ThingDef>
 

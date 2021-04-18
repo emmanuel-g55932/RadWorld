@@ -43,7 +43,7 @@
 			</bodyPartGroups>
 			<wornGraphicPath>Things/Apparel/ArchotechEnvironmentShield/AEShield</wornGraphicPath>
 			<layers>
-				<li>Belt</li>
+				<li>Middle</li>
 			</layers>
 		</apparel>
 	</ThingDef>

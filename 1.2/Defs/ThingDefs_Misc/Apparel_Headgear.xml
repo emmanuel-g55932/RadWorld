@@ -31,8 +31,6 @@
 			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.072</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.03</ArmorRating_Heat>
-			<Insulation_Cold>1.9</Insulation_Cold>
-			<Insulation_Heat>1.9</Insulation_Heat>
 			<EquipDelay>3.5</EquipDelay>
 		</statBases>
 		<equippedStatOffsets>
@@ -106,8 +104,6 @@
 			<ArmorRating_Sharp>0.63</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.31</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.42</ArmorRating_Heat>
-			<Insulation_Cold>5</Insulation_Cold>
-			<Insulation_Heat>5</Insulation_Heat>
 			<EquipDelay>2.5</EquipDelay>
 		</statBases>
 		<recipeMaker>
@@ -182,8 +178,6 @@
 			<ArmorRating_Sharp>0.63</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.31</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.42</ArmorRating_Heat>
-			<Insulation_Cold>5</Insulation_Cold>
-			<Insulation_Heat>5</Insulation_Heat>
 			<EquipDelay>2.5</EquipDelay>
 		</statBases>
 		<recipeMaker>
@@ -257,8 +251,6 @@
 			<ArmorRating_Sharp>0.92</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.40</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.46</ArmorRating_Heat>
-			<Insulation_Cold>10</Insulation_Cold>
-			<Insulation_Heat>10</Insulation_Heat>
 			<EquipDelay>2.5</EquipDelay>
 		</statBases>
 		<tradeTags Inherit="False">

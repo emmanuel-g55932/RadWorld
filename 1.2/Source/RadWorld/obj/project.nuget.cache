@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E5MSS1uIVcsw/UFdyOwTQ+ffxXWQDJea3jZkp25gkNM99kg5ecAFiOYbS9A5To5mMhKb2Wxeoe01MkrlEu+D7g==",
+  "dgSpecHash": "zUOnMNXNb1MWTJsR0blsXE553evxQCmyjgqDhxf1NbROwZ+18fKAi8Caiiyn3gUzMZ6gD8kv0cpiht8MKCGARg==",
   "success": true,
-  "projectFilePath": "C:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj",
+  "projectFilePath": "c:\\GAMES\\Rimworld\\Mods\\RadWorld\\1.2\\Source\\RadWorld\\RadWorld.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vova\\.nuget\\packages\\krafs.rimworld.ref\\1.2.2900\\krafs.rimworld.ref.1.2.2900.nupkg.sha512",
     "C:\\Users\\Vova\\.nuget\\packages\\lib.harmony\\2.0.4\\lib.harmony.2.0.4.nupkg.sha512"

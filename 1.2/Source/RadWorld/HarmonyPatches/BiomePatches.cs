@@ -282,4 +282,49 @@ namespace RadWorld
             return true;
         }
     }
+
+    [HarmonyPatch(typeof(RoyalTitlePermitWorker_CallShuttle), "GetReportFromCell")]
+    public static class GetReportFromCellPatch
+    {
+        public static bool Prefix(ref string __result, IntVec3 cell, Map map)
+        {
+            if (map.Biome.IsCavernBiome())
+            {
+                __result = GetReportFromCell(cell, map);
+                return false;
+            }
+            return true;
+        }
+
+        private static string GetReportFromCell(IntVec3 cell, Map map)
+        {
+            if (!cell.InBounds(map))
+            {
+                return "OutOfBounds".Translate().CapitalizeFirst();
+            }
+            if (cell.Fogged(map))
+            {
+                return "ShuttleCannotLand_Fogged".Translate().CapitalizeFirst();
+            }
+            if (!cell.Walkable(map))
+            {
+                return "ShuttleCannotLand_Unwalkable".Translate().CapitalizeFirst();
+            }
+            List<Thing> thingList = cell.GetThingList(map);
+            for (int i = 0; i < thingList.Count; i++)
+            {
+                Thing thing = thingList[i];
+                if (thing is IActiveDropPod || thing is Skyfaller || thing.def.category == ThingCategory.Item || thing.def.category == ThingCategory.Building)
+                {
+                    return "BlockedBy".Translate(thing).CapitalizeFirst();
+                }
+                PlantProperties plant = thing.def.plant;
+                if (plant != null && plant.IsTree)
+                {
+                    return "BlockedBy".Translate(thing).CapitalizeFirst();
+                }
+            }
+            return null;
+        }
+    }
 }

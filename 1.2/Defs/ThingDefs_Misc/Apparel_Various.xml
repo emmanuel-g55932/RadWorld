@@ -41,7 +41,6 @@
 			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.05</ArmorRating_Heat>
-			<Insulation_Cold>5</Insulation_Cold>
 			<EquipDelay>5</EquipDelay>
 			<RW_RadiationResistanceOffset>0.25</RW_RadiationResistanceOffset>
 		</statBases>
@@ -110,7 +109,6 @@
 			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.15</ArmorRating_Heat>
-			<Insulation_Cold>15</Insulation_Cold>
 			<EquipDelay>4</EquipDelay>
 			<RW_RadiationResistanceOffset>0.50</RW_RadiationResistanceOffset>
 		</statBases>
@@ -176,7 +174,6 @@
 			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.15</ArmorRating_Heat>
-			<Insulation_Cold>15</Insulation_Cold>
 			<EquipDelay>4</EquipDelay>
 			<RW_RadiationResistanceOffset>0.50</RW_RadiationResistanceOffset>
 		</statBases>
@@ -243,7 +240,6 @@
 			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.20</ArmorRating_Heat>
-			<Insulation_Cold>15</Insulation_Cold>
 			<EquipDelay>7</EquipDelay>
 			<RW_RadiationResistanceOffset>0.50</RW_RadiationResistanceOffset>
 		</statBases>
@@ -313,7 +309,6 @@
 			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 			<ArmorRating_Heat>0.20</ArmorRating_Heat>
-			<Insulation_Cold>15</Insulation_Cold>
 			<EquipDelay>7</EquipDelay>
 			<RW_RadiationResistanceOffset>0.50</RW_RadiationResistanceOffset>
 		</statBases>

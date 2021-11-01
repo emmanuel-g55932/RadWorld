@@ -131,7 +131,14 @@ namespace RadWorld
                 {
                     float num2 = Mathf.Lerp(0.85f, 1.15f, Rand.ValueSeeded(p.thingIDNumber ^ 0x46EDC5D));
                     num *= num2;
-                    HealthUtility.AdjustSeverity(p, RW_DefOf.RW_Radiation, num);
+                    if (RadWorldMod.settings.disableCustomRadiationSystem)
+                    {
+                        HealthUtility.AdjustSeverity(p, HediffDefOf.ToxicBuildup, num);
+                    }
+                    else
+                    {
+                        HealthUtility.AdjustSeverity(p, RW_DefOf.RW_Radiation, num);
+                    }
                 }
             }
         }
@@ -201,7 +208,7 @@ namespace RadWorld
     {
         public static void Postfix(BiomeDef __instance, ref IEnumerable<PawnKindDef> __result)
         {
-            if (!__instance.IsCavernBiome())
+            if (!__instance.IsCavernBiome() && !RadWorldMod.settings.disableNonRadiatedAnimalRemoval)
             {
                 __result = __result.ToList().Where(x => x.race?.modContentPack?.PackageId == RW_Utils.ModPackageId);
             }

@@ -77,6 +77,8 @@
     <Compile Include="ThoughtWorkers\ThoughtWorker_ExtraLeg.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_ExtraArm.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_MutantBlood.cs" />
+    <Compile Include="RadWorldMod.cs" />
+    <Compile Include="RadWorldSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
